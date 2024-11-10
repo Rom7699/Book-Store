@@ -1,35 +1,18 @@
 import express from "express";
 import dotenv from "dotenv";
 import { connectDB } from './config/db.js';
-
+import bookRoutes from "./routes/book.route.js";
 
 dotenv.config();
 
 const app = express();
+const PORT = process.env.PORT || 3000;
+app.use(express.json()); // allows to use JSON data in req.body
 
-app.post("/books", async (req, res) => {
-    const product = req.body; // data sent by the user
-    
-    if (!product.name || !product.price || !product.image) {
-        return res.status(400).json({ success: false, message: "Please provided all fields" });
-    }
+app.use("/api/books", bookRoutes);
 
-    const newProduct = new Product(product);
-
-    try {
-        await newProduct.save();
-        res.status(201).json({ success: true, message: newProduct });
-    } catch (error) {
-        console.error("Error in Create product", error.message);
-        return res.status(500).json({ success: false, message: "Server error" });
-    }
-
-});
-
-
-app.listen(5500, () => {
+app.listen(PORT, () => {
     connectDB();
-    console.log("Server started at https://localhost:5500")
+    console.log("Server started at https://localhost:" + PORT)
 });
 
-// mvvR7xXbwIknJPpO
