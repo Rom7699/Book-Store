@@ -1,26 +1,41 @@
 import { Box, Button, Container, Heading, Input, useColorModeValue, useToast, VStack } from "@chakra-ui/react";
 import { useState } from 'react';
-import { useBookStore } from "../../store/book";
-
+import { useBookStore } from "../store/book";
 
 
 
 const CreatePage = () => {
   const [newBook, setNewBook] = useState({
-		name: "",
+    name: "",
     author: "",
     genre: "",
     year: "",
-		price: "",
-		image: "",
-	});
+    price: "",
+    image: "",
+  });
 
-  const {createBook} = useBookStore();
+  const toast = useToast();
 
-  const handleAddBook = async() => {
+  const { createBook } = useBookStore();
+
+  const handleAddBook = async () => {
     const { success, message } = await createBook(newBook);
-    console.log("Success:", success);
-    console.log("Message:", message);
+    if (!success) {
+      toast({
+        title: "Error",
+        description: message,
+        status: "error",
+        isClosable: true
+      });
+    }
+    else{
+      toast({
+        title: "Success",
+        description: message,
+        status: "success",
+        isClosable: true
+      });
+    }
   };
 
   return (

@@ -17,7 +17,18 @@ export const useBookStore = create((set) => ({
             body: JSON.stringify(newBook)
         });
         const data = await res.json();
-        set((state) => ({ products: [...state.books, data.data] }));
-        return {success: true, message:"Book created successfully"};
-    }
+        set((state) => ({ books: [...state.books, data.data] }));
+        return { success: true, message: "Book created successfully" };
+    },
+    fetchBooks: async () => {
+        const res = await fetch("/api/books");
+        const data = await res.json();
+
+        // Assuming data is {success: true, message: [...]}
+        const booksArray = data.message;
+        console.log(booksArray); // Should output the array of books
+        set({ books: booksArray });
+
+        // console.log("Fetched books: ", booksArray);
+    },
 }));
