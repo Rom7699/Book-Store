@@ -31,4 +31,15 @@ export const useBookStore = create((set) => ({
 
         // console.log("Fetched books: ", booksArray);
     },
+    deleteBook: async (bid) => {
+        const res = await fetch(`/api/books/${bid}`, {
+			method: "DELETE",
+		});
+		const data = await res.json();
+		if (!data.success) return { success: false, message: data.message };
+
+		// update the ui immediately, without needing a refresh
+		set((state) => ({ books: state.books.filter((book) => book._id !== bid) }));
+		return { success: true, message: data.message };
+    }
 }));

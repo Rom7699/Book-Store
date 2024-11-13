@@ -1,31 +1,55 @@
 import { DeleteIcon, EditIcon } from "@chakra-ui/icons"
 import {
-	Box,
-	Button,
-	Heading,
-	HStack,
-	IconButton,
-	Image,
-	Input,
-	Modal,
-	ModalBody,
-	ModalCloseButton,
-	ModalContent,
-	ModalFooter,
-	ModalHeader,
-	ModalOverlay,
-	Text,
-	useColorModeValue,
-	useDisclosure,
-	useToast,
-	VStack,
+    Box,
+    Button,
+    Heading,
+    HStack,
+    IconButton,
+    Image,
+    Input,
+    Modal,
+    ModalBody,
+    ModalCloseButton,
+    ModalContent,
+    ModalFooter,
+    ModalHeader,
+    ModalOverlay,
+    Text,
+    useColorModeValue,
+    useDisclosure,
+    useToast,
+    VStack,
 } from "@chakra-ui/react";
 import { useBookStore } from "../store/book";
 import { useState } from "react";
 
 const BookCard = ({ book }) => {
     const textColor = useColorModeValue("gray.600", "gray.200");
-	const bg = useColorModeValue("white", "gray.800");
+    const bg = useColorModeValue("white", "gray.800");
+
+    const {deleteBook}=useBookStore();
+    const toast = useToast();
+
+    const handleDeleteBook = async(bid)=>{
+        const {success,message}  =  await deleteBook(bid)
+        if (!success) {
+			toast({
+				title: "Error",
+				description: message,
+				status: "error",
+				duration: 3000,
+				isClosable: true,
+			});
+		} else {
+			toast({
+				title: "Success",
+				description: message,
+				status: "success",
+				duration: 3000,
+				isClosable: true,
+			});
+		}
+    }
 
 
     return (
@@ -49,7 +73,8 @@ const BookCard = ({ book }) => {
 
                 <HStack spacing={2}>
                     <IconButton icon={<EditIcon />} colorScheme='blue' />
-                    <IconButton icon={<DeleteIcon />} colorScheme='red' />
+                    <IconButton icon={<DeleteIcon />} onClick={() => handleDeleteBook(book._id)} 
+                    colorScheme='red' />
                 </HStack>
             </Box>
         </Box>
