@@ -1,6 +1,8 @@
 # Book Store Application
 
-A modern web application for managing and browsing a collection of books. This full-stack application allows users to create, read, update, and delete books in a visually appealing interface.
+Book Store is a beginner-friendly project that demonstrates the fundamentals of the MERN (MongoDB, Express, React, Node.js) stack. This project originated from a class assignment to create a book store server, which I expanded upon using a YouTube tutorial to develop a modern frontend interface. By combining academic foundations with self-directed learning, I transformed a basic server requirement into a complete full-stack application.
+
+This modern web application allows users to manage a collection of books through a clean, intuitive interface. Perfect for developers looking to understand full-stack development with practical, real-world features.
 
 ## Features
 
@@ -20,8 +22,8 @@ A modern web application for managing and browsing a collection of books. This f
 
 ### Backend
 * **Express.js**: Web application framework for Node.js
-* **Express Router**: For organizing API routes and endpoints
 * **RESTful API**: Backend service with CRUD operations for books
+* **MongoDB**: NoSQL database for storing book data
 * **JSON**: Data exchange format
 
 ## Installation and Setup
@@ -121,3 +123,12 @@ Book-Store/
 3. Commit your changes: `git commit -m 'Add amazing feature'`
 4. Push to the branch: `git push origin feature/amazing-feature`
 5. Open a Pull Request
+
+## Credits and Acknowledgements
+
+This project's frontend implementation was inspired by and developed with guidance from:
+
+- **Tutorial Name**: MERN Stack Tutorial with Deployment – Beginner's Course 
+- **Creator**: ‪@asaprogrammer_‬ 
+- **URL**: https://www.youtube.com/watch?v=O3BUHwfHf84&t=6066s&ab_channel=freeCodeCamp.org
+- **Contribution**: This tutorial provided valuable insights on implementing React with Chakra UI and state management with Zustand, which I adapted for this book store application.
