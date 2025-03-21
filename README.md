@@ -67,18 +67,44 @@ npm run dev
 
 ```
 Book-Store/
-├── frontend/                # Frontend React application
-│   ├── src/
-│   │   ├── components/      # Reusable components
+├── frontend/                # React frontend application
+│   ├── public/              # Static files
+│   │   ├── index.html       # HTML entry point
+│   │   └── assets/          # Images, fonts, etc.
+│   ├── src/                 # Source code
+│   │   ├── components/      # Reusable UI components
+│   │   │   ├── BookCard.jsx # Component for displaying a book
+│   │   │   └── ...          # Other components
 │   │   ├── pages/           # Application pages
-│   │   ├── store/           # Zustand state management
-│   │   └── App.jsx          # Main application component
-│   └── ...
-└── backend/                 # Backend API service
-    ├── routes/              # API routes using Express Router
-    ├── models/              # Data models
-    ├── controllers/         # Request handlers
-    └── ...
+│   │   │   ├── HomePage.jsx # Home page showing all books
+│   │   │   ├── CreatePage.jsx # Page for creating new books
+│   │   │   └── ...          # Other pages
+│   │   ├── store/           # State management
+│   │   │   └── book.js      # Zustand store for book operations
+│   │   ├── App.jsx          # Main application component
+│   │   ├── main.jsx         # Entry point for React
+│   │   └── index.css        # Global styles
+│   ├── package.json         # Frontend dependencies
+│   ├── vite.config.js       # Vite configuration
+│   └── ...                  # Other config files
+│
+├── backend/                 # Node.js backend application
+│   ├── controllers/         # Request handlers
+│   │   └── bookController.js # Book CRUD operations
+│   ├── models/              # Data models
+│   │   └── Book.js          # Book model schema
+│   ├── routes/              # API routes
+│   │   └── bookRoutes.js    # Book API endpoints
+│   ├── middleware/          # Express middleware
+│   ├── config/              # Configuration files
+│   │   └── db.js            # Database connection
+│   ├── server.js            # Entry point for the server
+│   ├── package.json         # Backend dependencies
+│   └── ...                  # Other files
+│
+├── .gitignore               # Git ignore file
+├── README.md                # Project documentation
+└── package.json             # Root package.json (if any)
 ```
 
 ## Future Enhancements
