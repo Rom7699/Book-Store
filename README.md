@@ -95,7 +95,6 @@ Book-Store/
 │   │   └── Book.js          # Book model schema
 │   ├── routes/              # API routes
 │   │   └── bookRoutes.js    # Book API endpoints
-│   ├── middleware/          # Express middleware
 │   ├── config/              # Configuration files
 │   │   └── db.js            # Database connection
 │   ├── server.js            # Entry point for the server
